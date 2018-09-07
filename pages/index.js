@@ -9,8 +9,8 @@ const Index = () => (
             <p>Hello Next JS</p>
             <h1>Blog Entries</h1>
             <ul>
-                <PostLink title="Hello Next.js"></PostLink>
-                <PostLink title="Blog Entry 2"></PostLink>
+                <PostLink id="hello-next" title="Hello Next.js"></PostLink>
+                <PostLink id="blog-entry-2" title="Blog Entry 2"></PostLink>
             </ul>
         </MyLayout>
     </div>
@@ -19,7 +19,7 @@ const Index = () => (
 const PostLink = (props) => {
     return (
         <li>
-            <Link href={`/post?title=${props.title}`}>
+            <Link as={`/p/${props.id}`} href={`/post?title=${props.title}`}>
                 <a>{props.title}</a>
             </Link>
         </li>
