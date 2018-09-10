@@ -38,7 +38,7 @@ exports[`With Snapshot Testing App shows "Hello world!" 1`] = `
     Batman TV shows
   </h1>
   <p>
-    Hello World!
+    Hello Batman Fans!
   </p>
 </div>
 `;

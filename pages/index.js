@@ -23,7 +23,7 @@ const Index = (props) => (
 
         )}
 
-        <p>Hello Batman!</p>
+        <p>Hello Batman Fans!</p>
 
     </MyLayout>
 )
