@@ -1,20 +1,32 @@
 // This is the Link API
 import Link from 'next/link';
-import Header from "../components/Header";
+import fetch from "isomorphic-unfetch";
 import MyLayout from "../components/MyLayout";
 
-const Index = () => (
-    <div>
-        <MyLayout>
-            <p>Hello Next JS</p>
-            <h1>Blog Entries</h1>
+const Index = (props) => (
+    <MyLayout>
+        <h1>Batman TV shows</h1>
+        {(!!props.shows) && (
             <ul>
-                <PostLink id="hello-next" title="Hello Next.js"></PostLink>
-                <PostLink id="blog-entry-2" title="Blog Entry 2"></PostLink>
+                {props.shows.map((show) => {
+                    <li key={show.id}>
+                        <PostLink id={show.id} title={show.name}></PostLink>
+                    </li>
+                })}
             </ul>
-        </MyLayout>
-    </div>
+        )}
+
+        <p>Hello World!</p>
+
+    </MyLayout>
 )
+
+Index.getInitialProps = async function () {
+    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+    const data = await res.json();
+
+    return { shows: data }
+}
 
 const PostLink = (props) => {
     return (
